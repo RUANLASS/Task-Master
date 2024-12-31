@@ -1,0 +1,25 @@
+{% extends 'base.html' %} <!--shows inheritance of templates, giving name of parent template -->
+
+<!--Code to be put into the head placeholder-->
+{% block head %}
+<title>Task Master</title>
+
+
+{% endblock %}
+
+<!--Code to be put into the body placeholder-->
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;">Update Task</h1>
+    <form action="/update/{{task.id}}" method="POST">
+        <h4>Enter the new task</h4>
+        <input type="text" name="content" id="content" placeholder="{{task.content}}">
+        <br>
+        <h4>Enter the new deadline</h4>
+        <input type="date" id="deadline" placeholder="{{task.deadline}}">
+        <br>
+        <br>
+        <input type="submit" id="but" value="Update">
+    </form>
+</div>
+{% endblock %}

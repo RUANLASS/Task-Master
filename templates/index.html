@@ -1,0 +1,78 @@
+{% extends 'base.html' %} <!--shows inheritance of templates, giving name of parent template -->
+
+<!--Code to be put into the head placeholder-->
+{% block head %}
+<title>Task Master</title>
+
+
+{% endblock %}
+
+<!--Code to be put into the body placeholder-->
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center;">Task Master</h1>
+    
+    <h2> To Do List</h2>
+
+    <br>
+
+    <table>
+        <tr> 
+            <th>Task</th> 
+            <th>Date Added</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>{{ task.deadline }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Mark as Completed</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}    
+    </table>
+
+    <br>
+    <br>
+    <form action="/" method="POST">
+        <h4>Enter the task you want to add to the list:</h4>
+        <input type="text" name="content" id="content" placeholder="Doing the dishes.....">
+        <br>
+        <h4>Enter deadline of the task:</h4>
+        <input type="date" name="deadline" id="deadline">
+        <br>
+        <br>
+        <input type="submit" id="but" value="Add Task">
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <h2> Completed Tasks </h2>
+
+    <br>
+    <br>
+
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Date Added</th>
+            <th>Deadline</th>
+        </tr>
+        {% for task in tasks2 %}
+            <tr>
+                <td>{{ task.contents2 }}</td>
+                <td>{{ task.date_created2.date() }}</td>
+                <td>{{ task.deadline2 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

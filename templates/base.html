@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}{% endblock %} <!--Basically like a placeholder. Don't have to write the HTML boilerplate code every time. Every template that uses this will have all the code outside of the curly brackets and curly brackets act like placeholders-->
+    <!--Jinja syntax to link css stylesheet:-->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}"> <!--url_for is a Flask/Jinja function, gives proper path/url for HTML/CSS to work properly.--> 
+   <!-- Will have to write the same <link rel> statement as above for JS, only part inside url_for() will change and maybe some other small changes.-->
+</head>
+<body>
+    {% block body %}{% endblock %} <!--Jinja 2 syntax.-->
+</body>
+</html>
